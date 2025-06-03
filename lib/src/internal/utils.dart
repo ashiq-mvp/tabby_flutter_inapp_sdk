@@ -48,6 +48,7 @@ List<String> getLocalStrings({
   required String price,
   required Currency currency,
   required Lang lang,
+  bool isSymbol = false,
 }) {
   final fullPrice =
       (double.parse(price) / 4).toStringAsFixed(currency.decimals);
@@ -55,7 +56,7 @@ List<String> getLocalStrings({
     return [
       'أو قسّمها على 4 دفعات شهرية بقيمة ',
       fullPrice,
-      ' ${currency.displayName} ',
+      ' ${isSymbol ? currency.displaySymbol : currency.displayName} ',
       'بدون رسوم أو فوائد. ',
       'لمعرفة المزيد'
     ];
@@ -63,7 +64,7 @@ List<String> getLocalStrings({
     return [
       'or 4 interest-free payments of ',
       fullPrice,
-      ' ${currency.displayName}',
+      ' ${isSymbol ? currency.displaySymbol : currency.displayName}',
       '. ',
       'Learn more'
     ];

@@ -8,12 +8,14 @@ class TabbyCheckoutSnippet extends StatefulWidget {
     required this.currency,
     required this.price,
     required this.lang,
+    this.isSymbol = false,
     Key? key,
   }) : super(key: key);
 
-  final String price;
-  final Currency currency;
   final Lang lang;
+  final String price;
+  final bool isSymbol;
+  final Currency currency;
 
   @override
   State<TabbyCheckoutSnippet> createState() => _TabbyCheckoutSnippetState();
@@ -33,9 +35,14 @@ class _TabbyCheckoutSnippetState extends State<TabbyCheckoutSnippet> {
 
   @override
   Widget build(BuildContext context) {
+    final currency = widget.currency;
     final installmentPrice =
         getPrice(price: widget.price, currency: widget.currency);
-    final amountText = '${widget.currency.displayName} $installmentPrice';
+    final fontFamily =
+        widget.isSymbol ? widget.currency.symbolFontFamily : null;
+    final currencyText =
+        widget.isSymbol ? currency.displaySymbol : currency.displayName;
+    final amountText = '$currencyText $installmentPrice';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,23 +63,27 @@ class _TabbyCheckoutSnippetState extends State<TabbyCheckoutSnippet> {
           children: [
             CheckoutSnippetCell(
               position: 1,
-              localeStrings: localeStrings,
               amountText: amountText,
+              fontFamily: fontFamily,
+              localeStrings: localeStrings,
             ),
             CheckoutSnippetCell(
               position: 2,
-              localeStrings: localeStrings,
               amountText: amountText,
+              fontFamily: fontFamily,
+              localeStrings: localeStrings,
             ),
             CheckoutSnippetCell(
               position: 3,
-              localeStrings: localeStrings,
               amountText: amountText,
+              fontFamily: fontFamily,
+              localeStrings: localeStrings,
             ),
             CheckoutSnippetCell(
               position: 4,
-              localeStrings: localeStrings,
               amountText: amountText,
+              fontFamily: fontFamily,
+              localeStrings: localeStrings,
             ),
           ],
         ),
@@ -86,12 +97,14 @@ class CheckoutSnippetCell extends StatelessWidget {
     required this.position,
     required this.localeStrings,
     required this.amountText,
+    this.fontFamily,
     Key? key,
   }) : super(key: key);
 
-  final List<String> localeStrings;
-  final String amountText;
   final int position;
+  final String amountText;
+  final String? fontFamily;
+  final List<String> localeStrings;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +138,10 @@ class CheckoutSnippetCell extends StatelessWidget {
           gap,
           CheckoutWhenText(position: position, localeStrings: localeStrings),
           gap,
-          CheckoutSnippetAmountText(amount: amountText),
+          CheckoutSnippetAmountText(
+            amount: amountText,
+            fontFamily: fontFamily,
+          ),
         ],
       ),
     );
@@ -181,9 +197,11 @@ class CheckoutSnippetImage extends StatelessWidget {
 class CheckoutSnippetAmountText extends StatelessWidget {
   const CheckoutSnippetAmountText({
     required this.amount,
+    this.fontFamily,
     Key? key,
   }) : super(key: key);
   final String amount;
+  final String? fontFamily;
 
   @override
   Widget build(BuildContext context) {
@@ -192,6 +210,7 @@ class CheckoutSnippetAmountText extends StatelessWidget {
       style: TextStyle(
         fontSize: 11,
         color: dividerColor,
+        fontFamily: fontFamily,
       ),
     );
   }

@@ -12,17 +12,19 @@ class TabbyPresentationSnippet extends StatefulWidget {
     required this.price,
     required this.currency,
     required this.lang,
+    this.isSymbol = false,
+    this.textColor = const Color(0xFF292929),
     this.borderColor = const Color(0xFFD6DED6),
     this.backgroundColor = const Color(0xFFFFFFFF),
-    this.textColor = const Color(0xFF292929),
     Key? key,
   }) : super(key: key);
-  final String price;
-  final Currency currency;
   final Lang lang;
+  final String price;
+  final bool isSymbol;
+  final Color textColor;
+  final Currency currency;
   final Color borderColor;
   final Color backgroundColor;
-  final Color textColor;
 
   @override
   State<TabbyPresentationSnippet> createState() =>
@@ -74,9 +76,10 @@ class _TabbyPresentationSnippetState extends State<TabbyPresentationSnippet> {
   @override
   Widget build(BuildContext context) {
     final localStrings = getLocalStrings(
+      lang: widget.lang,
       price: widget.price,
       currency: widget.currency,
-      lang: widget.lang,
+      isSymbol: widget.isSymbol,
     );
     return GestureDetector(
       onTap: openWebBrowser,

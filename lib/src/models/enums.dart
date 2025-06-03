@@ -18,6 +18,21 @@ extension CurrencyExt on Currency {
     }
   }
 
+  String get displaySymbol {
+    switch (this) {
+      case Currency.aed:
+        return '\uE900';
+      case Currency.sar:
+        return '\uE900';
+      case Currency.kwd:
+        return '\uE900';
+      case Currency.bhd:
+        return '\uE900';
+      case Currency.qar:
+        return '\uE900';
+    }
+  }
+
   String get countryName {
     switch (this) {
       case Currency.aed:
@@ -45,6 +60,21 @@ extension CurrencyExt on Currency {
         return 3;
       case Currency.qar:
         return 2;
+    }
+  }
+
+  String get symbolFontFamily {
+    switch (this) {
+      case Currency.aed:
+        return 'Saudi Riyal';
+      case Currency.sar:
+        return 'Saudi Riyal';
+      case Currency.kwd:
+        return 'Saudi Riyal';
+      case Currency.bhd:
+        return 'Saudi Riyal';
+      case Currency.qar:
+        return 'Saudi Riyal';
     }
   }
 }

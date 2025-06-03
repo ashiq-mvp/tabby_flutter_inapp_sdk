@@ -121,7 +121,19 @@ class _TabbyPresentationSnippetState extends State<TabbyPresentationSnippet> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    TextSpan(text: localStrings[3]),
+                    TextSpan(
+                      text: localStrings[3],
+                      style: TextStyle(
+                        height: 1.5,
+                        fontSize: 15,
+                        color: widget.textColor,
+                        fontFamily: widget.isSymbol
+                            ? widget.currency.symbolFontFamily
+                            : widget.lang == Lang.ar
+                                ? 'Arial'
+                                : 'Inter',
+                      ),
+                    ),
                     TextSpan(
                       text: localStrings[4],
                       style: const TextStyle(

@@ -21,15 +21,15 @@ extension CurrencyExt on Currency {
   String get displaySymbol {
     switch (this) {
       case Currency.aed:
-        return '\uE900';
+        return 'AED';
       case Currency.sar:
         return '\uE900';
       case Currency.kwd:
-        return '\uE900';
+        return 'KWD';
       case Currency.bhd:
-        return '\uE900';
+        return 'BHD';
       case Currency.qar:
-        return '\uE900';
+        return 'QAR';
     }
   }
 
@@ -63,18 +63,18 @@ extension CurrencyExt on Currency {
     }
   }
 
-  String get symbolFontFamily {
+  String? get symbolFontFamily {
     switch (this) {
       case Currency.aed:
-        return 'Saudi Riyal';
+        return null;
       case Currency.sar:
         return 'Saudi Riyal';
       case Currency.kwd:
-        return 'Saudi Riyal';
+        return null;
       case Currency.bhd:
-        return 'Saudi Riyal';
+        return null;
       case Currency.qar:
-        return 'Saudi Riyal';
+        return null;
     }
   }
 }

@@ -56,7 +56,7 @@ List<String> getLocalStrings({
     return [
       'أو قسّمها على 4 دفعات شهرية بقيمة ',
       fullPrice,
-      ' ${isSymbol ? currency.displaySymbol : currency.displayName} ',
+      isSymbol ? currency.displaySymbol : currency.displayName,
       'بدون رسوم أو فوائد. ',
       'لمعرفة المزيد'
     ];
@@ -64,7 +64,7 @@ List<String> getLocalStrings({
     return [
       'or 4 interest-free payments of ',
       fullPrice,
-      ' ${isSymbol ? currency.displaySymbol : currency.displayName}',
+      isSymbol ? currency.displaySymbol : currency.displayName,
       '. ',
       'Learn more'
     ];

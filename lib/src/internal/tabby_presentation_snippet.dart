@@ -114,26 +114,18 @@ class _TabbyPresentationSnippetState extends State<TabbyPresentationSnippet> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const TextSpan(text: ' '),
                     TextSpan(
                       text: localStrings[2],
-                      style: const TextStyle(
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: localStrings[3],
                       style: TextStyle(
-                        height: 1.5,
-                        fontSize: 15,
-                        color: widget.textColor,
+                        fontWeight: FontWeight.bold,
                         fontFamily: widget.isSymbol
                             ? widget.currency.symbolFontFamily
-                            : widget.lang == Lang.ar
-                                ? 'Arial'
-                                : 'Inter',
+                            : 'Inter',
                       ),
                     ),
+                    if (widget.lang == Lang.ar) const TextSpan(text: ' '),
+                    TextSpan(text: localStrings[3]),
                     TextSpan(
                       text: localStrings[4],
                       style: const TextStyle(
